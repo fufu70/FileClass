@@ -140,11 +140,6 @@ class File
      */
     public static function valid($path = "", array $valid_types = []) {
 
-        // path is a directory
-        if (filetype($path) == 'dir') {
-            return false;
-        }
-
         if (sizeof($valid_types) == 0) {
             $valid_types = self::$_default_types;
         }

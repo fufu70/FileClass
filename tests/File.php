@@ -108,6 +108,10 @@ class File_Test extends \PHPUnit_Framework_TestCase
 
         $default_image_file = self::TEST_DIRECTORY . "/usable.png";
         file_put_contents($default_image_file, file_get_contents("http://placehold.it/350x150"));
+
+        $not_valid_file  = self::TEST_DIRECTORY . "/not_valid.txt";
+        file_put_contents($not_valid_file, "This file is simply a text file(filename)");
+
         return [
             [
                 $default_image_file,
@@ -126,6 +130,12 @@ class File_Test extends \PHPUnit_Framework_TestCase
                 [],
                 false,
                 NotFoundException::FILE_NOT_FOUND
+            ],
+            [
+                $not_valid_file,
+                [],
+                false,
+                NotValidException::FILE_NOT_VALID
             ],
         ];
     }
