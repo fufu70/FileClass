@@ -134,7 +134,7 @@ class File
      * Checks if an image has a valid type, or any other file. If the file is
      * an image it uses exif_imagetype to get the file, otherwise it utilizes
      * the mim
-     * 
+     *
      * @param  string  $path        The file path.
      * @param  array   $valid_types The types to validate against.
      * @return boolean              If the file i valid.
