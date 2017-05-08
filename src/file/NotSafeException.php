@@ -12,7 +12,7 @@ namespace Common\File;
  * Class NotSafeException.
  *
  * Exception is thrown when an file is unsafe.
- * 
+ *
  * @author Christian Micklisch <christian.micklisch@successwithsos.com>
  */
 class NotSafeException extends \Exception {

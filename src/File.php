@@ -57,7 +57,7 @@ class File
     /**
      * Get general information about a file.
      *
-     * Retreives the: 
+     * Retreives the:
      *     Realpath
      *     Directory
      *     Basename
@@ -102,7 +102,7 @@ class File
      *
      * Checks to see that the given path exists, is valid with the valid_types
      * and is safe to load in.
-     * 
+     *
      * @param  string  $path        The file path.
      * @param  array   $valid_types The types to validate against.
      * @return boolean              If the file is usable.
@@ -110,7 +110,8 @@ class File
      * @throws NotSafeException
      * @throws NotValidException
      */
-    public static function usable($path = "", array $valid_types = []) {
+    public static function usable($path = "", array $valid_types = [])
+    {
 
         if (!file_exists($path)) {
             throw new NotFoundException(NotFoundException::FILE_NOT_FOUND);
@@ -138,7 +139,8 @@ class File
      * @param  array   $valid_types The types to validate against.
      * @return boolean              If the file i valid.
      */
-    public static function valid($path = "", array $valid_types = []) {
+    public static function valid($path = "", array $valid_types = [])
+    {
 
         if (sizeof($valid_types) == 0) {
             $valid_types = self::$_default_types;
@@ -162,7 +164,8 @@ class File
      * @return boolean       If the file is safe or not.
      * @author Yousef Ismaeil Cliprz
      */
-    public static function safe($path = "") {
+    public static function safe($path = "")
+    {
         return (filesize($path) > 0)
             && !self::checkNameValid($path)
             && !self::checkNameLength($path);
@@ -175,7 +178,8 @@ class File
      * @return boolean      That the file_upload_name is valid.
      * @author Yousef Ismaeil Cliprz
      */
-    private static function checkNameValid ($name = "") {
+    private static function checkNameValid($name = "")
+    {
         return (bool) ((preg_match("`^[-0-9A-Z_\.]+$`i", $name)) ? true : false);
     }
 
@@ -186,7 +190,8 @@ class File
      * @return boolean      That the file_upload_length is valid.
      * @author Yousef Ismaeil Cliprz
      */
-    private static function checkNameLength ($name = "") {
-        return (bool) ((mb_strlen($name,"UTF-8") > 225) ? true : false);
+    private static function checkNameLength($name = "")
+    {
+        return (bool) ((mb_strlen($name, "UTF-8") > 225) ? true : false);
     }
 }

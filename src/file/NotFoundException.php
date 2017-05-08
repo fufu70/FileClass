@@ -12,7 +12,7 @@ namespace Common\File;
  * Class NotFoundException.
  *
  * Exception is thrown when an file cannot be found.
- * 
+ *
  * @author Christian Micklisch <christian.micklisch@successwithsos.com>
  */
 class NotFoundException extends \Exception {

@@ -12,7 +12,7 @@ namespace Common\File;
  * Class NotValidException.
  *
  * Exception is thrown when an file is not valid.
- * 
+ *
  * @author Christian Micklisch <christian.micklisch@successwithsos.com>
  */
 class NotValidException extends \Exception {

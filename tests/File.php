@@ -31,7 +31,8 @@ class File_Test extends \PHPUnit_Framework_TestCase
     /**
      * Sets up a basic environment with the testing directory
      */
-    public function setUp() {
+    public function setUp()
+    {
         try {
             $this->createDirectory(self::TEST_DIRECTORY);
         } catch(\Exception $e) {}
@@ -59,7 +60,8 @@ class File_Test extends \PHPUnit_Framework_TestCase
     /**
      * Removes the basic environment for testing the File class
      */
-    public static function tearDownAfterClass() {
+    public static function tearDownAfterClass()
+    {
         try {
             system("rm -rf ".escapeshellarg(current(explode('/', self::TEST_DIRECTORY))));
         } catch(\Exception $e) {}
@@ -80,7 +82,8 @@ class File_Test extends \PHPUnit_Framework_TestCase
      *
      * @return array
      */
-    public function input_info() {
+    public function input_info()
+    {
         $this->createDirectory(self::TEST_DIRECTORY);
 
         $default_image_file = self::TEST_DIRECTORY . "/default.png";
@@ -103,7 +106,8 @@ class File_Test extends \PHPUnit_Framework_TestCase
      * @return array An array of file paths, valid types, and expected
      *               exception messages.
      */
-    public function input_usable() {
+    public function input_usable()
+    {
         $this->createDirectory(self::TEST_DIRECTORY);
 
         $default_image_file = self::TEST_DIRECTORY . "/usable.png";
@@ -157,7 +161,8 @@ class File_Test extends \PHPUnit_Framework_TestCase
      *
      * @param  string $path The file path.
      */
-    public function test_info($path = "") {
+    public function test_info($path = "")
+    {
         try {
             $result = File::info($path);
         } catch (NotFoundException $e) {
