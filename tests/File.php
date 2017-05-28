@@ -108,6 +108,9 @@ class File_Test extends \PHPUnit_Framework_TestCase
      */
     public function input_usable()
     {
+        require_once(__DIR__ . "/../src/file/NotFoundException.php");
+        require_once(__DIR__ . "/../src/file/NotSafeException.php");
+        require_once(__DIR__ . "/../src/file/NotValidException.php");
         $this->createDirectory(self::TEST_DIRECTORY);
 
         $default_image_file = self::TEST_DIRECTORY . "/usable.png";
