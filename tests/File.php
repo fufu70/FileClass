@@ -116,8 +116,17 @@ class File_Test extends \PHPUnit_Framework_TestCase
         $default_image_file = self::TEST_DIRECTORY . "/usable.png";
         file_put_contents($default_image_file, file_get_contents("http://placehold.it/350x150"));
 
-        $not_valid_file  = self::TEST_DIRECTORY . "/not_valid.txt";
-        file_put_contents($not_valid_file, "This file is simply a text file(filename)");
+        $not_valid_file  = self::TEST_DIRECTORY . "/not_valid.php";
+        file_put_contents($not_valid_file, "<?php echo 'hello';");
+
+        $valid_txt = self::TEST_DIRECTORY . "/valid.txt";
+        file_put_contents($valid_txt, "Hello World");
+
+        $valid_csv = self::TEST_DIRECTORY . "/valid.csv";
+        file_put_contents($valid_csv, "Title,Description\nHello,World");
+
+        $valid_xlsx = self::TEST_DIRECTORY . "/valid.xlsx";
+        file_put_contents($valid_xlsx, "Hello World");
 
         return [
             [
@@ -133,7 +142,7 @@ class File_Test extends \PHPUnit_Framework_TestCase
                 NotSafeException::FILE_NOT_SAFE
             ],
             [
-                self::TEST_DIRECTORY . '/doesnotexist.txt',
+                self::TEST_DIRECTORY . '/doesnotexist.text',
                 [],
                 false,
                 NotFoundException::FILE_NOT_FOUND
@@ -143,6 +152,24 @@ class File_Test extends \PHPUnit_Framework_TestCase
                 [],
                 false,
                 NotValidException::FILE_NOT_VALID
+            ],
+            [
+                $valid_txt,
+                [],
+                true,
+                "" // No Exception
+            ],
+            [
+                $valid_csv,
+                [],
+                true,
+                "" // No Exception
+            ],
+            [
+                $valid_xlsx,
+                [],
+                true,
+                "" // No Exception
             ],
         ];
     }

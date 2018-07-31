@@ -52,6 +52,9 @@ class File
         IMAGETYPE_GIF,
         IMAGETYPE_JPEG,
         IMAGETYPE_PNG,
+        "txt",
+        "csv",
+        "xlsx"
     ];
 
     /**
@@ -149,6 +152,8 @@ class File
         // if the file is an image
         if (is_array(getimagesize($path))) {
             return in_array(exif_imagetype($path), $valid_types);
+        } else { // general files
+            return in_array(self::info($path)[self::EXTENSION_KEY], $valid_types);
         }
         
         return in_array(mime_content_type($path), $valid_types);
