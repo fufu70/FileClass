@@ -52,9 +52,9 @@ class File
         IMAGETYPE_GIF,
         IMAGETYPE_JPEG,
         IMAGETYPE_PNG,
-        "txt",
-        "csv",
-        "xlsx"
+        "text/plain",
+        "text/csv",
+        "application/vnd.ms-excel"
     ];
 
     /**
@@ -153,7 +153,7 @@ class File
         if (is_array(getimagesize($path))) {
             return in_array(exif_imagetype($path), $valid_types);
         } else { // general files
-            return in_array(self::info($path)[self::EXTENSION_KEY], $valid_types);
+            return in_array(self::info($path)[self::MIMETYPE_KEY], $valid_types);
         }
         
         return in_array(mime_content_type($path), $valid_types);
