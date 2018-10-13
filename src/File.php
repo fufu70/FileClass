@@ -150,11 +150,8 @@ class File
         }
 
         // if the file is an image
-        if (is_array(getimagesize($path))) {
-            return in_array(exif_imagetype($path), $valid_types);
-        }
-        
-        return in_array(mime_content_type($path), $valid_types);
+        return in_array(exif_imagetype($path), $valid_types) 
+            || in_array(mime_content_type($path), $valid_types);
     }
 
     /**
